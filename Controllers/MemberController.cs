@@ -18,6 +18,11 @@ namespace Assignment2.Controllers
             _context = context;
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         // GET: Member
         public async Task<IActionResult> Index()
         {
