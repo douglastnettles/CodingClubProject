@@ -2,7 +2,7 @@ using System;
 
 namespace Assignment2.Models
 {
-    public class Member
+    public class Admin
     {
         public int ID {get;set;}
         public string FirstName {get;set;}

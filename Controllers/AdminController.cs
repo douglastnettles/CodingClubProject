@@ -9,22 +9,22 @@ using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
-    public class MemberController : Controller
+    public class AdminController : Controller
     {
-        private readonly MemberContext _context;
+        private readonly AdminContext _context;
 
-        public MemberController(MemberContext context)
+        public AdminController(AdminContext context)
         {
             _context = context;
         }
 
-        // GET: Member
+        // GET: Admin
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Member.ToListAsync());
+            return View(await _context.Admin.ToListAsync());
         }
 
-        // GET: Member/Details/5
+        // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,41 +32,39 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var member = await _context.Member
+            var admin = await _context.Admin
                 .SingleOrDefaultAsync(m => m.ID == id);
-            if (member == null)
+            if (admin == null)
             {
                 return NotFound();
             }
 
-            return View(member);
-
+            return View(admin);
         }
 
-        // GET: Member/Create
+        // GET: Admin/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Member/Create
+        // POST: Admin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int? id, [Bind("ID,FirstName,LastName,Password")] Member member)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Password")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(member);
+                _context.Add(admin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            } 
-                        
-            return View(member);
+            }
+            return View(admin);
         }
 
-        // GET: Member/Edit/5
+        // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +72,22 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var member = await _context.Member.SingleOrDefaultAsync(m => m.ID == id);
-            if (member == null)
+            var admin = await _context.Admin.SingleOrDefaultAsync(m => m.ID == id);
+            if (admin == null)
             {
                 return NotFound();
             }
-            return View(member);
+            return View(admin);
         }
 
-        // POST: Member/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Password")] Member member)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Password")] Admin admin)
         {
-            if (id != member.ID)
+            if (id != admin.ID)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace Assignment2.Controllers
             {
                 try
                 {
-                    _context.Update(member);
+                    _context.Update(admin);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MemberExists(member.ID))
+                    if (!AdminExists(admin.ID))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace Assignment2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(member);
+            return View(admin);
         }
 
-        // GET: Member/Delete/5
+        // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var member = await _context.Member
+            var admin = await _context.Admin
                 .SingleOrDefaultAsync(m => m.ID == id);
-            if (member == null)
+            if (admin == null)
             {
                 return NotFound();
             }
 
-            return View(member);
+            return View(admin);
         }
 
-        // POST: Member/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var member = await _context.Member.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Member.Remove(member);
+            var admin = await _context.Admin.SingleOrDefaultAsync(m => m.ID == id);
+            _context.Admin.Remove(admin);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MemberExists(int id)
+        private bool AdminExists(int id)
         {
-            return _context.Member.Any(e => e.ID == id);
+            return _context.Admin.Any(e => e.ID == id);
         }
     }
 }

@@ -31,6 +31,9 @@ namespace Assignment2
 
             services.AddDbContext<MemberContext>(options =>
                     options.UseSqlite("Data Source=Assignment2.db"));
+
+            services.AddDbContext<AdminContext>(options =>
+                    options.UseSqlite("Data Source=Assignment2.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
