@@ -18,11 +18,6 @@ namespace Assignment2.Controllers
             _context = context;
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         // GET: Member
         public async Task<IActionResult> Index()
         {
@@ -45,7 +40,6 @@ namespace Assignment2.Controllers
             }
 
             return View(member);
-
         }
 
         // GET: Member/Create
@@ -59,15 +53,14 @@ namespace Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int? id, [Bind("ID,FirstName,LastName,Password")] Member member)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName")] Member member)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(member);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            } 
-                        
+            }
             return View(member);
         }
 
@@ -92,7 +85,7 @@ namespace Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Password")] Member member)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName")] Member member)
         {
             if (id != member.ID)
             {
@@ -138,6 +131,21 @@ namespace Assignment2.Controllers
             }
 
             return View(member);
+        }
+
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        public IActionResult AdminIndex()
+        {
+            return View();
+        }
+
+        public IActionResult AdminCreate()
+        {
+            return View();
         }
 
         // POST: Member/Delete/5

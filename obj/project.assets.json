@@ -13123,11 +13123,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\Assignment2.csproj",
+      "projectUniqueName": "c:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\Assignment2.csproj",
       "projectName": "Assignment2",
-      "projectPath": "C:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\Assignment2.csproj",
+      "projectPath": "c:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\Assignment2.csproj",
       "packagesPath": "C:\\Users\\xTDaddy7x\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\obj\\",
+      "outputPath": "c:\\Users\\xTDaddy7x\\Documents\\CIDM4390\\Assignment2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
